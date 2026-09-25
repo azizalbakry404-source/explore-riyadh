@@ -1,15 +1,35 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>B7 Stay — Explore Riyadh</title>
+
 <style>
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;margin:0;background:#f4efe7;color:#173c3b}
-header{background:linear-gradient(135deg,#173c3b,#5b4732);color:white;padding:28px 20px;text-align:center}
-h1{margin:0;font-size:30px} .sub{opacity:.9;margin-top:6px}
-.grid{max-width:900px;margin:20px auto;padding:0 14px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px}
-.card{background:#fffaf2;border-radius:16px;padding:16px;box-shadow:0 3px 14px #00000012;display:flex;gap:12px;align-items:center}
-.icon{font-size:28px} .ar{font-weight:700;font-size:17px} .en{font-size:14px;color:#6b665e;margin-top:3px}
-a{margin-left:auto;background:#b6873d;color:white;text-decoration:none;padding:9px 12px;border-radius:10px;white-space:nowrap;font-size:13px}
-footer{text-align:center;padding:24px;color:#6b665e}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+  margin:0;
+  background:#f4efe7;
+  color:#173c3b;
+}
+
+header{
+  background:linear-gradient(135deg,#173c3b,#5b4732);
+  color:white;
+  padding:28px 20px;
+  text-align:center;
+}
+
+h1{
+  margin:0;
+  font-size:30px;
+}
+
+.sub{
+  opacity:.9;
+  margin-top:6px;
+}
 
 .grid{
   display:grid;
@@ -21,6 +41,9 @@ footer{text-align:center;padding:24px;color:#6b665e}
 }
 
 .card{
+  background:#fffaf2;
+  border-radius:16px;
+  box-shadow:0 3px 14px #00000012;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -31,19 +54,22 @@ footer{text-align:center;padding:24px;color:#6b665e}
   box-sizing:border-box;
 }
 
-.card > div:last-child{
-  width:100%;
-}
-
 .icon{
   font-size:34px;
   margin-bottom:10px;
 }
 
 .ar{
+  font-weight:700;
   font-size:18px;
   line-height:1.4;
   margin-bottom:6px;
+}
+
+.en{
+  font-size:14px;
+  color:#6b665e;
+  margin-top:3px;
 }
 
 .card a{
@@ -51,72 +77,490 @@ footer{text-align:center;padding:24px;color:#6b665e}
   width:100%;
   box-sizing:border-box;
   margin-top:12px;
+  background:#b6873d;
+  color:white;
+  text-decoration:none;
   padding:10px 6px;
+  border-radius:10px;
   font-size:14px;
 }
-</style></head><body>
+
+.category{
+  cursor:pointer;
+  min-height:170px;
+  transition:transform .15s ease,box-shadow .15s ease;
+}
+
+.category:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 18px #00000018;
+}
+
+.category .icon{
+  font-size:42px;
+}
+
+.category .ar{
+  font-size:20px;
+}
+
+.back{
+  display:none;
+  max-width:900px;
+  margin:20px auto 0;
+  padding:0 14px;
+}
+
+.back button{
+  width:100%;
+  border:0;
+  background:#173c3b;
+  color:white;
+  padding:12px;
+  border-radius:12px;
+  font-size:15px;
+  cursor:pointer;
+}
+
+.section-title{
+  display:none;
+  max-width:900px;
+  margin:20px auto 0;
+  padding:0 14px;
+  text-align:center;
+}
+
+.section-title h2{
+  margin:0;
+  font-size:24px;
+}
+
+.section-title p{
+  margin:6px 0 0;
+  color:#6b665e;
+}
+
+footer{
+  text-align:center;
+  padding:24px;
+  color:#6b665e;
+}
+
+.hidden{
+  display:none !important;
+}
+
+@media(max-width:600px){
+  .grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    padding:0 10px;
+  }
+
+  .card{
+    min-height:175px;
+    padding:15px 8px;
+  }
+
+  .ar{
+    font-size:16px;
+  }
+
+  .en{
+    font-size:13px;
+  }
+
+  .card a{
+    font-size:13px;
+  }
+
+  .category .icon{
+    font-size:36px;
+  }
+
+  .category .ar{
+    font-size:17px;
+  }
+}
+</style>
+</head>
+
+<body>
 
 <header>
-<h1>Explore Riyadh</h1>
-<div class="sub">B7 Stay — Handpicked places for our guests</div>
+  <h1>Explore Riyadh</h1>
+  <div class="sub">B7 Stay — Handpicked places for our guests</div>
 </header>
 
-<div class="grid">
 
-<div class="card"><div class="icon">✈️</div><div><div class="ar" dir="rtl">مطار الملك خالد الدولي</div><div class="en">King Khalid International Airport</div></div><a href="https://www.google.com/maps/search/?api=1&query=King%20Khalid%20International%20Airport%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
+<!-- التصنيفات الرئيسية -->
 
-<div class="card"><div class="icon">🕌</div><div><div class="ar" dir="rtl">جامع إبراهيم بن سعيدان – حي المروج</div><div class="en">Ibrahim Bin Saidan Mosque – Al Muruj</div></div><a href="https://www.google.com/maps/search/?api=1&query=Ibrahim%20Bin%20Saidan%20Mosque%2C%20Al%20Muruj%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
+<div id="categories" class="grid">
 
-<div class="card"><div class="icon">🏙️</div><div><div class="ar" dir="rtl">مركز الملك عبدالله المالي</div><div class="en">King Abdullah Financial District (KAFD)</div></div><a href="https://www.google.com/maps/search/?api=1&query=King%20Abdullah%20Financial%20District%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
+  <div class="card category" onclick="showCategory('historic')">
+    <div class="icon">🏛️</div>
+    <div>
+      <div class="ar" dir="rtl">المواقع التاريخية والثقافية</div>
+      <div class="en">Historic & Cultural</div>
+    </div>
+  </div>
 
-<div class="card"><div class="icon">💻</div><div><div class="ar" dir="rtl">المدينة الرقمية</div><div class="en">Digital City</div></div><a href="https://www.google.com/maps/search/?api=1&query=Digital%20City%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
+  <div class="card category" onclick="showCategory('shopping')">
+    <div class="icon">🛍️</div>
+    <div>
+      <div class="ar" dir="rtl">المراكز التجارية والأسواق</div>
+      <div class="en">Shopping & Markets</div>
+    </div>
+  </div>
 
-<div class="card"><div class="icon">🌴</div><div><div class="ar" dir="rtl">البجيري</div><div class="en">Al Bujairi</div></div><a href="https://www.google.com/maps/search/?api=1&query=Al%20Bujairi%2C%20Diriyah" target="_blank" rel="noopener">Open Maps</a></div>
+  <div class="card category" onclick="showCategory('entertainment')">
+    <div class="icon">🎢</div>
+    <div>
+      <div class="ar" dir="rtl">الترفيه والفعاليات</div>
+      <div class="en">Entertainment & Activities</div>
+    </div>
+  </div>
 
-<div class="card"><div class="icon">🛍️</div><div><div class="ar" dir="rtl">سوق الزل</div><div class="en">Souq Al Zal</div></div><a href="https://www.google.com/maps/search/?api=1&query=Souq%20Al%20Zal%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
+  <div class="card category" onclick="showCategory('landmarks')">
+    <div class="icon">🏙️</div>
+    <div>
+      <div class="ar" dir="rtl">المعالم والأماكن المميزة</div>
+      <div class="en">Landmarks & Highlights</div>
+    </div>
+  </div>
 
-<div class="card"><div class="icon">🏛️</div><div><div class="ar" dir="rtl">قصر طويق – الحي الدبلوماسي</div><div class="en">Tuwaiq Palace – Diplomatic Quarter</div></div><a href="https://www.google.com/maps/search/?api=1&query=Tuwaiq%20Palace%2C%20Diplomatic%20Quarter%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🛒</div><div><div class="ar" dir="rtl">الرياض بارك</div><div class="en">Riyadh Park Mall</div></div><a href="https://www.google.com/maps/search/?api=1&query=Riyadh%20Park%20Mall%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🛍️</div><div><div class="ar" dir="rtl">النخيل مول</div><div class="en">Nakheel Mall</div></div><a href="https://www.google.com/maps/search/?api=1&query=Nakheel%20Mall%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🏬</div><div><div class="ar" dir="rtl">سولتير مول</div><div class="en">Solitaire Mall</div></div><a href="https://www.google.com/maps/search/?api=1&query=Solitaire%20Mall%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🚴</div><div><div class="ar" dir="rtl">المسار الرياضي</div><div class="en">Sports Boulevard</div></div><a href="https://www.google.com/maps/search/?api=1&query=Sports%20Boulevard%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🛍️</div><div><div class="ar" dir="rtl">أسواق طيبة</div><div class="en">Souq Taibah</div></div><a href="https://www.google.com/maps/search/?api=1&query=Souq%20Taibah%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🛒</div><div><div class="ar" dir="rtl">مركز المعيقلية التجاري</div><div class="en">Al Maigliah Commercial Center</div></div><a href="https://www.google.com/maps/search/?api=1&query=Al%20Maigliah%20Commercial%20Center%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🏰</div><div><div class="ar" dir="rtl">متحف قصر المصمك</div><div class="en">Masmak Palace Museum</div></div><a href="https://www.google.com/maps/search/?api=1&query=Masmak%20Palace%20Museum%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🏘️</div><div><div class="ar" dir="rtl">حي الدحو التراثي</div><div class="en">Ad Doho Historic Neighborhood</div></div><a href="https://www.google.com/maps/search/?api=1&query=Ad%20Doho%20Neighborhood%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🏙️</div><div><div class="ar" dir="rtl">برج المملكة</div><div class="en">Kingdom Centre Tower</div></div><a href="https://www.google.com/maps/search/?api=1&query=Kingdom%20Centre%20Tower%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🏙️</div><div><div class="ar" dir="rtl">برج الفيصلية</div><div class="en">Al Faisaliah Tower</div></div><a href="https://www.google.com/maps/search/?api=1&query=Al%20Faisaliah%20Tower%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
-
-<div class="card"><div class="icon">🍽️</div><div><div class="ar" dir="rtl">مطعم فريج صويلح</div><div class="en">Freej Swaileh Restaurant</div></div><a href="https://www.google.com/maps/search/?api=1&query=Freej%20Swaileh%20Restaurant%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a></div>
+  <div class="card category" onclick="showCategory('services')">
+    <div class="icon">🍔</div>
+    <div>
+      <div class="ar" dir="rtl">خدمات الضيف</div>
+      <div class="en">Guest Services</div>
+    </div>
+  </div>
 
 </div>
 
-<footer>Tap any place to open its location in Google Maps.</footer>
 
-</body></html>
+<!-- عنوان التصنيف -->
+
+<div id="sectionTitle" class="section-title">
+  <h2 id="sectionTitleAr"></h2>
+  <p id="sectionTitleEn"></p>
+</div>
+
+
+<!-- زر العودة -->
+
+<div id="back" class="back">
+  <button onclick="showCategories()">← العودة إلى التصنيفات</button>
+</div>
+
+
+<!-- الأماكن -->
+
+<div id="places" class="grid hidden">
+
+
+<!-- ==================== التاريخية والثقافية ==================== -->
+
+<div class="place historic card">
+  <div class="icon">🕌</div>
+  <div>
+    <div class="ar" dir="rtl">جامع إبراهيم بن سعيدان – حي المروج</div>
+    <div class="en">Ibrahim Bin Saidan Mosque – Al Muruj</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Ibrahim%20Bin%20Saidan%20Mosque%2C%20Al%20Muruj%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place historic card">
+  <div class="icon">🌴</div>
+  <div>
+    <div class="ar" dir="rtl">البجيري</div>
+    <div class="en">Al Bujairi</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Al%20Bujairi%2C%20Diriyah" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place historic card">
+  <div class="icon">🛍️</div>
+  <div>
+    <div class="ar" dir="rtl">سوق الزل</div>
+    <div class="en">Souq Al Zal</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Souq%20Al%20Zal%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place historic card">
+  <div class="icon">🏛️</div>
+  <div>
+    <div class="ar" dir="rtl">قصر طويق – الحي الدبلوماسي</div>
+    <div class="en">Tuwaiq Palace – Diplomatic Quarter</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Tuwaiq%20Palace%2C%20Diplomatic%20Quarter%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place historic card">
+  <div class="icon">🏰</div>
+  <div>
+    <div class="ar" dir="rtl">متحف قصر المصمك</div>
+    <div class="en">Masmak Palace Museum</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Masmak%20Palace%20Museum%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place historic card">
+  <div class="icon">🏘️</div>
+  <div>
+    <div class="ar" dir="rtl">حي الدحو التراثي</div>
+    <div class="en">Ad Doho Historic Neighborhood</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Ad%20Doho%20Neighborhood%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+
+<!-- ==================== التسوق ==================== -->
+
+<div class="place shopping card">
+  <div class="icon">🛒</div>
+  <div>
+    <div class="ar" dir="rtl">الرياض بارك</div>
+    <div class="en">Riyadh Park Mall</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Riyadh%20Park%20Mall%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place shopping card">
+  <div class="icon">🛍️</div>
+  <div>
+    <div class="ar" dir="rtl">النخيل مول</div>
+    <div class="en">Nakheel Mall</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Nakheel%20Mall%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place shopping card">
+  <div class="icon">🏬</div>
+  <div>
+    <div class="ar" dir="rtl">سولتير مول</div>
+    <div class="en">Solitaire Mall</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Solitaire%20Mall%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place shopping card">
+  <div class="icon">🛍️</div>
+  <div>
+    <div class="ar" dir="rtl">أسواق طيبة</div>
+    <div class="en">Souq Taibah</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Souq%20Taibah%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place shopping card">
+  <div class="icon">🛒</div>
+  <div>
+    <div class="ar" dir="rtl">مركز المعيقلية التجاري</div>
+    <div class="en">Al Maigliah Commercial Center</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Al%20Maigliah%20Commercial%20Center%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+
+<!-- ==================== الترفيه ==================== -->
+
+<div class="place entertainment card">
+  <div class="icon">🌍</div>
+  <div>
+    <div class="ar" dir="rtl">بوليفارد وورلد</div>
+    <div class="en">Boulevard World</div>
+  </div>
+  <a href="https://maps.app.goo.gl/23CAuXWtK6Z1Xcii8?g_st=ic" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place entertainment card">
+  <div class="icon">⚽</div>
+  <div>
+    <div class="ar" dir="rtl">ملعب نادي الشباب</div>
+    <div class="en">Al Shabab Club Stadium</div>
+  </div>
+  <a href="https://maps.app.goo.gl/zUGssWWhaVZ9NNu79?g_st=ic" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place entertainment card">
+  <div class="icon">🚴</div>
+  <div>
+    <div class="ar" dir="rtl">المسار الرياضي</div>
+    <div class="en">Sports Boulevard</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Sports%20Boulevard%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place entertainment card">
+  <div class="icon">🌊</div>
+  <div>
+    <div class="ar" dir="rtl">أكواريبيا</div>
+    <div class="en">Aquarabia Qiddiya City</div>
+  </div>
+  <a href="http://aquarabiaqiddiyacity.com/en" target="_blank" rel="noopener">الموقع الرسمي</a>
+</div>
+
+<div class="place entertainment card">
+  <div class="icon">🎢</div>
+  <div>
+    <div class="ar" dir="rtl">سكس فلاق</div>
+    <div class="en">Six Flags Qiddiya City</div>
+  </div>
+  <a href="http://sixflagsqiddiyacity.com/en" target="_blank" rel="noopener">الموقع الرسمي</a>
+</div>
+
+
+<!-- ==================== المعالم ==================== -->
+
+<div class="place landmarks card">
+  <div class="icon">✈️</div>
+  <div>
+    <div class="ar" dir="rtl">مطار الملك خالد الدولي</div>
+    <div class="en">King Khalid International Airport</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=King%20Khalid%20International%20Airport%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place landmarks card">
+  <div class="icon">🏙️</div>
+  <div>
+    <div class="ar" dir="rtl">مركز الملك عبدالله المالي</div>
+    <div class="en">King Abdullah Financial District (KAFD)</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=King%20Abdullah%20Financial%20District%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place landmarks card">
+  <div class="icon">💻</div>
+  <div>
+    <div class="ar" dir="rtl">المدينة الرقمية</div>
+    <div class="en">Digital City</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Digital%20City%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place landmarks card">
+  <div class="icon">🏙️</div>
+  <div>
+    <div class="ar" dir="rtl">برج المملكة</div>
+    <div class="en">Kingdom Centre Tower</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Kingdom%20Centre%20Tower%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place landmarks card">
+  <div class="icon">🏙️</div>
+  <div>
+    <div class="ar" dir="rtl">برج الفيصلية</div>
+    <div class="en">Al Faisaliah Tower</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Al%20Faisaliah%20Tower%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+
+<!-- ==================== خدمات الضيف ==================== -->
+
+<div class="place services card">
+  <div class="icon">🚇</div>
+  <div>
+    <div class="ar" dir="rtl">محطة مترو الحبيب</div>
+    <div class="en">Al Habib Metro Station</div>
+  </div>
+  <a href="https://maps.app.goo.gl/8PYF8eh5jRpV7myr8?g_st=ic" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+<div class="place services card">
+  <div class="icon">🍔</div>
+  <div>
+    <div class="ar" dir="rtl">هنقرستيشن</div>
+    <div class="en">HungerStation</div>
+  </div>
+  <a href="https://apps.apple.com/app/id596011949" target="_blank" rel="noopener">تحميل التطبيق</a>
+</div>
+
+<div class="place services card">
+  <div class="icon">🍽️</div>
+  <div>
+    <div class="ar" dir="rtl">مطعم فريج صويلح</div>
+    <div class="en">Freej Swaileh Restaurant</div>
+  </div>
+  <a href="https://www.google.com/maps/search/?api=1&query=Freej%20Swaileh%20Restaurant%2C%20Riyadh" target="_blank" rel="noopener">Open Maps</a>
+</div>
+
+</div>
+
+
+<footer>
+  Tap any place to open its location or service.
+</footer>
+
 
 <script>
 
-document.querySelector('.grid').insertAdjacentHTML('beforeend','<div class="card"><div class="icon">🌍</div><div><div class="ar" dir="rtl">بوليفارد وورلد</div><div class="en">Boulevard World</div></div><a href="https://maps.app.goo.gl/23CAuXWtK6Z1Xcii8?g_st=ic" target="_blank" rel="noopener">Open Maps</a></div>');
+const categoryInfo = {
+  historic:{
+    ar:"المواقع التاريخية والثقافية",
+    en:"Historic & Cultural"
+  },
+  shopping:{
+    ar:"المراكز التجارية والأسواق",
+    en:"Shopping & Markets"
+  },
+  entertainment:{
+    ar:"الترفيه والفعاليات",
+    en:"Entertainment & Activities"
+  },
+  landmarks:{
+    ar:"المعالم والأماكن المميزة",
+    en:"Landmarks & Highlights"
+  },
+  services:{
+    ar:"خدمات الضيف",
+    en:"Guest Services"
+  }
+};
 
-document.querySelector('.grid').insertAdjacentHTML('beforeend', '<div class="card"><div class="icon">⚽</div><div><div class="ar" dir="rtl">ملعب نادي الشباب</div><a href="https://maps.app.goo.gl/zUGssWWhaVZ9NNu79?g_st=ic" target="_blank" rel="noopener">Open Maps</a></div></div>');
+function showCategory(category){
 
-document.querySelector('.grid').insertAdjacentHTML('beforeend', '<div class="card"><div class="icon">🚇</div><div><div class="ar" dir="rtl">محطة مترو الحبيب</div><a href="https://maps.app.goo.gl/8PYF8eh5jRpV7myr8?g_st=ic" target="_blank" rel="noopener">Open Maps</a></div></div>');
+  document.getElementById("categories").classList.add("hidden");
+  document.getElementById("places").classList.remove("hidden");
+  document.getElementById("back").style.display="block";
+  document.getElementById("sectionTitle").style.display="block";
 
-document.querySelector('.grid').insertAdjacentHTML('beforeend', '<div class="card"><div class="icon">🍔</div><div class="ar" dir="rtl">هنقرستيشن</div><div class="en">HungerStation</div><a href="https://apps.apple.com/app/id596011949" target="_blank" rel="noopener">تحميل التطبيق</a></div>');
+  document.getElementById("sectionTitleAr").textContent=categoryInfo[category].ar;
+  document.getElementById("sectionTitleEn").textContent=categoryInfo[category].en;
 
-document.querySelector('.grid').insertAdjacentHTML('beforeend', '<div class="card"><div class="icon">🌊</div><div><div class="ar" dir="rtl">أكواريبيا</div><div class="en">Aquarabia Qiddiya City</div></div><a href="http://aquarabiaqiddiyacity.com/en" target="_blank" rel="noopener">الموقع الرسمي</a></div>');
+  document.querySelectorAll(".place").forEach(function(place){
+    if(place.classList.contains(category)){
+      place.classList.remove("hidden");
+    }else{
+      place.classList.add("hidden");
+    }
+  });
 
-document.querySelector('.grid').insertAdjacentHTML('beforeend', '<div class="card"><div class="icon">🎢</div><div><div class="ar" dir="rtl">سكس فلاق</div><div class="en">Six Flags Qiddiya City</div></div><a href="http://sixflagsqiddiyacity.com/en" target="_blank" rel="noopener">الموقع الرسمي</a></div>');
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
+
+function showCategories(){
+
+  document.getElementById("places").classList.add("hidden");
+  document.getElementById("categories").classList.remove("hidden");
+  document.getElementById("back").style.display="none";
+  document.getElementById("sectionTitle").style.display="none";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+}
 
 </script>
+
+</body>
+</html>
